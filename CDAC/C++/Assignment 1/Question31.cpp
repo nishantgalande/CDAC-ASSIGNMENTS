@@ -2,7 +2,6 @@
 using namespace std;
 
 
-
 class Employee{
     int empId;
     string name;
@@ -20,6 +19,8 @@ public:
         employeeCount = employeeCount +1;
         empId = 1000 + employeeCount;
     }
+
+
     // setters
     void setName(const string& n){
         if(n != ""){
@@ -50,6 +51,7 @@ public:
              cout<<"Enter basic salary between 10,000 to 5,00,000 !!"<<endl;
         }
     }
+
     void deactivate(){
         isActive = false;
     }
@@ -74,7 +76,7 @@ public:
         return isActive;
     }
 
-    static int getEmployeeCount(){
+    static int getEmployeeCount() {
         return employeeCount;
     }
 
@@ -179,6 +181,7 @@ public:
 };
 
 int Employee::employeeCount = 0;
+
 int main(){
 
     Employee e1;
@@ -189,6 +192,13 @@ int main(){
     e2->acceptDetails();
     e3->acceptDetails();
 
+    // Try uncommenting — observe the compiler error, then explain in a comment why
+
+    // e1.empId = 999;              // *Error* -> we get error here because we are trying to access the private variable in the class and 
+    // e1.basicSalary = -1000;      // assigning the value to it.we can access the value of it through getter and set its value through 
+                                    // setter so the private variables are stictly binded that no one can access it so we cannot access it.
+
+
     e1.printPayslip();
     e2->printPayslip();
     e3->printPayslip();
@@ -196,6 +206,7 @@ int main(){
     e3->deactivate();
     if (!e3->getIsActive())
         cout << e3->getName() << " is no longer active. Payroll skipped." << endl;
+    
     cout << "Total Employees : " << Employee::getEmployeeCount() << endl;
     delete e2;
     delete e3;
