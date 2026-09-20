@@ -1,23 +1,20 @@
 package com.nishant;
 
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.Collections;
 import java.util.List;
-import java.util.Scanner;
 
 public class CollectionPractice {
 
 	public static void main(String[] args) {
 
 		// 1.Problem 1
-		Scanner sc = new Scanner(System.in);
 		List<String> colour = new ArrayList<String>();
-		System.out.print("Enter the size of List: ");
-		int num = sc.nextInt();
-		sc.nextLine();
-		for (int i = 0; i < num; i++) {
-			colour.add(sc.nextLine());
-		}
+		colour.add("Yellow");
+		colour.add("Green");
+		colour.add("Purple");
+		colour.add("Red");
+		colour.add("Blue");
 
 		// 2.Problem 2
 
@@ -30,14 +27,14 @@ public class CollectionPractice {
 
 		// Problem 3
 //		System.out.println(colour.get(1));
-		
-		//Problem 4
+
+		// Problem 4
 		String str = "Red";
 //		Iterator<String> itr = colour.iterator();
 		int index = colour.indexOf("Black");
-		
-		if(index != -1) {
-			colour.set(index, str); 
+
+		if (index != -1) {
+			colour.set(index, str);
 		}
 		System.out.println("---------------");
 		for (String s : colour) {
@@ -52,5 +49,32 @@ public class CollectionPractice {
 		// Problem 6
 		System.out.println("---------------");
 		System.out.println(colour.contains("Red"));
+		// Problem 7
+		System.out.println("---------------");
+		Collections.sort(colour);
+		for (String s : colour) {
+			System.out.println(s);
+		}
+		// Problem 8
+		List<String> list = new ArrayList<String>(Collections.nCopies(colour.size(), null));
+		System.out.println("---------------New List After Copying -------------");
+		Collections.copy(list, colour);
+		for (String s : list) {
+			System.out.println(s);
+		}
+
+		// Problem 9
+		System.out.println("---------------After shuffling----------------");
+		Collections.shuffle(colour);
+		for (String s : colour) {
+			System.out.println(s);
+		}
+
+		// Problem 10
+		System.out.println("---------------After shuffling----------------");
+		Collections.reverse(colour);
+		for (String s : colour) {
+			System.out.println(s);
+		}
 	}
 }
